@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - ZoomyCab</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f7f7f7;
+    }
+
+    .container {
+      display: flex;
+      width: 80%;
+      max-width: 1000px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .left-part {
+      flex: 1;
+      padding: 40px;
+      background-color: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left-part h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .left-part form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .left-part label {
+      margin-bottom: 5px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .left-part input {
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .left-part button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .left-part button:hover {
+      background-color: #45a049;
+    }
+
+    .right-part {
+      flex: 1;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .right-part img {
+      max-width: 80%;
+      height: auto;
+      border-radius: 15px;
+    }
+
+    .error-message {
+      color: red;
+      margin-top: -15px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left part for login form -->
+    <div class="left-part">
+      <h1>Admin Login</h1>
+      <form action="/zmyadmin" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <% if (typeof error !== 'undefined') { %>
+          <p class="error-message"><%= error %></p>
+        <% } %>
+        
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <!-- Right part for logo -->
+    <div class="right-part">
+      <img src=https://ideogram.ai/assets/image/lossless/response/0KyoGeMTTeGUYZJycQl01g alt="ZoomyCab Logo">
+    </div>
+  </div>
+</body>
+</html>

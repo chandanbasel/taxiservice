@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        h2 {
+            color: #333;
+            margin-left: 20px;
+        }
+        table {
+            width: 90%;
+            margin: 0 auto 30px;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+            background-color: #fff;
+        }
+        thead {
+            background-color: #333;
+        }
+        th {
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 15px;
+            text-align: center;
+        }
+        td {
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        tr:hover td {
+            background-color: #f1f1f1;
+        }
+        .action-buttons a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin: 0 5px;
+            display: inline-block;
+        }
+        .edit-btn {
+            background-color: #4CAF50; /* Green */
+        }
+        .delete-btn {
+            background-color: #f44336; /* Red */
+        }
+              
+            footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            margin-top: 30px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<h1> Manage Employee </h1>
+<h2>Employee Data</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Work</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th>Actions</th> <!-- Added Actions column -->
+            </tr>
+        </thead>
+        <tbody>
+            <% employees.forEach(employee => { %>
+                <tr>
+                    <td><%= employee.name %></td>
+                    <td><%= employee.age %></td>
+                    <td><%= employee.work %></td>
+                    <td><%= employee.mobile %></td>
+                    <td><%= employee.email %></td>
+                    <td><%= employee.salary %></td>
+                    <td class="action-buttons">
+                        <a href="/edit-employee/<%= employee._id %>" class="edit-btn">Edit</a>
+                        <a href="/delete-employee/<%= employee._id %>" class="delete-btn">Delete</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+<footer>
+        Admin Dashboard &copy; 2024
+    </footer>
+</body>
+</html>

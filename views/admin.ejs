@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Admin Dasboard</title>
+    <style>
+
+        .reminders {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures content stays within bounds */
+}
+
+.calendar-container {
+    max-width: 100%;
+    overflow-x: auto; /* Allows horizontal scroll if necessary */
+}
+
+.calendar-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar-container th, .calendar-container td {
+    border: 1px solid #ddd;
+    width: 14.28%; /* 100% divided by 7 days */
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.calendar-container th {
+    background-color: #f4b400;
+    color: white;
+}
+
+.calendar-container td {
+    background-color: #fafafa;
+}
+
+.calendar-container .today {
+    background-color: #4285f4;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <!--<i class='bx bx-code-alt'></i>-->
+            <div class="logo-name"><span>ZOOMY</span>Cab</div>
+        </a>
+        <ul class="side-menu">
+            <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="#"><i class='bx bxs-face'></i>Manage Admin</a></li>
+            <li><a href="#"><i class='bx bxs-factory'></i> Company</a></li>
+            <li><a href="http://localhost:3000/"><i class='bx bxs-user-plus'></i>New Employee</a></li>
+            <li><a href="http://localhost:3000/manageemployee"><i class='bx bxs-user-plus'></i> Employee</a></li>
+            <li><a href="http://localhost:3000/managedriver"><i class='bx bx-user'></i> Drivers</a></li>
+            <li><a href="http://localhost:3000/submit-driver"><i class='bx bx-user'></i>New Drivers</a></li>
+            <li><a href="#"><i class='bx bx-face'></i> Riders</a></li>
+            <li><a href="#"><i class='bx bx-message-rounded-dots'></i>Send Messages</a></li>
+            <li><a href="#"><i class='bx bx-envelope'></i> E-mails</a></li>
+            <li><a href="#"><i class='bx bxs-car-wash'></i>VMC</a></li>
+            <li><a href="#"><i class='bx bxs-car-mechanic' ></i>Vehicle Models</a></li>
+            <li><a href="#"><i class='bx bxs-location-plus' ></i> Locations</a></li>
+            <li><a href="#"><i class='bx bx-rupee' ></i> Fare</a></li>
+            <li><a href="#"><i class='bx bx-trip' ></i> Trip</a></li>
+            <li><a href="#"><i class='bx bx-dollar'></i> Payouts</a></li>
+            <li><a href="#"><i class='bx bx-rupee' ></i> Owe Amt.</a></li>
+            <li><a href="#"><i class='bx bxs-spreadsheet'></i> Statements</a></li>
+            <li><a href="#"><i class='bx bxs-wallet-alt' ></i> Wallet & Promo</a></li>
+            <li><a href="#"><i class='bx bx-revision'></i>Referrals</a></li>
+            <li><a href="#"><i class='bx bxs-map-alt'></i>Map</a></li>
+            <li><a href="#"><i class='bx bxs-devices'></i> Mob App Version</a></li>
+            <li><a href="#"><i class='bx bx-rupee' ></i> Payment Gateway</a></li>
+            <li><a href="#"><i class='bx bxs-dollar-circle' ></i>Fees</a></li>
+            <li><a href="#"><i class='bx bxs-cog' ></i>>Referral Settings</a></li>
+            <li><a href="#"><i class='bx bxs-flag' ></i>Country</a></li>
+            <li><a href="#"><i class='bx bx-euro' ></i>Currency</a></li>
+            <li><a href="#"><i class='bx bx-store-alt'></i>Shop</a></li>
+            <li class="active"><a href="#"><i class='bx bx-analyse'></i>Analytics</a></li>
+            <li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
+            <li><a href="#"><i class='bx bx-group'></i>Users</a></li>
+            <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="/logout" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End of Sidebar -->
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden>
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <a href="#" class="notif">
+                <i class='bx bx-bell'></i>
+                <span class="count">12</span>
+            </a>
+            <a href="#" class="profile">
+                <img src="https://ideogram.ai/assets/progressive-image/balanced/response/_fvhVc_6QiefsxNxb-ISqw">
+            </a>
+        </nav>
+
+        <!-- End of Navbar -->
+
+        <main>
+            <div class="header">
+                <div class="left">
+                    <h1>Dashboard</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="#">
+                                Analytics
+                            </a></li>
+                        /
+                        <li><a href="#" class="active">Shop</a></li>
+                    </ul>
+                </div>
+                <a href="#" class="report">
+                    <i class='bx bx-cloud-download'></i>
+                    <span>Download CSV</span>
+                </a>
+            </div>
+
+            <!-- Insights -->
+            <ul class="insights"> 
+                <li><i class='bx bx-user-plus'></i>
+                    <span class="info">
+                        <h3>
+                            0
+                        </h3>
+                        <p>Today's Drivers</p>
+                    </span>
+                </li>
+                <li><i class='bx bxs-user-plus'></i>
+                    <span class="info">
+                        <h3>
+                            0
+                        </h3>
+                        <p>Today's Riders</p>
+                    </span>
+                </li>
+                <li><i class='bx bx-trip' ></i>
+                    <span class="info">
+                        <h3>
+                            0
+                        </h3>
+                        <p>Today's Trips</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bx-rupee'></i>
+                    <span class="info">
+                        <h3>
+                            0
+                        </h3>
+                        <p>Today's Earning</p>
+                    </span>
+                </li>
+            </ul>
+            <ul class="insights"> 
+                <li><i class='bx bx-user-plus'></i>
+                    <span class="info">
+                      <h3><%=totalDrivers%> </h3> <!-- Display the total number of drivers -->
+                      <p>Total Drivers</p>
+                    </span>
+                  </li>
+                  
+                <li><i class='bx bxs-user-plus'></i>
+                    <span class="info">
+                        <h3>
+                            0
+                        </h3>
+                        <p>Total Riders</p>
+                    </span>
+                </li>
+                <li><i class='bx bx-trip' ></i>
+                    <span class="info">
+                        <h3>
+                            0
+                        </h3>
+                        <p>Total Trips</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bx-rupee'></i>
+                    <span class="info">
+                        <h3>
+                            0
+                        </h3>
+                        <p>Total Earning</p>
+                    </span>
+                </li>
+            </ul>
+            <!-- End of Insights -->
+
+            <div class="bottom-data">
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-receipt'></i>
+                        <h3>Recent Trip</h3>
+                        <i class='bx bx-filter'></i>
+                        <i class='bx bx-search'></i>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rider</th>
+                               <th>Trip Date</th>
+                                <th>Status</th>
+                                <th>Driver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="https://ideogram.ai/assets/image/lossless/response/mbf79neoTmKIaZzDw4Qmlg">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>14-08-2023</td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td><p>Pawan Tamang</p></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>14-08-2023</td>
+                                <td><span class="status pending">En Route</span></td>
+                                <td><p>Pawan Tamang</p></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images\profile-1.jpg">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>14-08-2023</td>
+                                <td><span class="status process">Failed</span></td>
+                                <td><p>Pawan Tamang</p></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>14-08-2023</td>
+                                <td><span class="status completed">Scheduled</span></td>
+                                <td><p>Pawan Tamang</p></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>14-08-2023</td>
+                                <td><span class="status pending">In Progress</span></td>
+                                <td><p>Pawan Tamang</p></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>14-08-2023</td>
+                                <td><span class="status completed">No Show</span></td>
+                                <td><p>Pawan Tamang</p></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>14-08-2023</td>
+                                <td><span class="status pending">Canceled</span></td>
+                                <td><p>Pawan Tamang</p></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>14-08-2023</td>
+                                <td><span class="status completed">Arrived</span></td>
+                                <td><p>Pawan Tamang</p></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>14-08-2023</td>
+                                <td><span class="status process">Assigned</span></td>
+                                <td><p>Pawan Tamang</p></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="https://ideogram.ai/assets/progressive-image/balanced/response/_fvhVc_6QiefsxNxb-ISqw">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>14-08-2023</td>
+                                <td><span class="status completed">Accepted</span></td>
+                                <td><p>Pawan Tamang</p></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="images/profile-1.jpg">
+                                    <p>John Doe</p>
+                                </td>
+                                <td>14-08-2023</td>
+                                <td><span class="status process">Pending</span></td>
+                                <td><p>Pawan Tamang</p></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Reminders -->
+                <div class="reminders">
+                    <div class="header">
+                        <i class='bx bx-note'></i>
+                        <h3>Calenders</h3>
+                        <i class='bx bx-filter'></i>
+                        <i class='bx bx-plus'></i>
+                    </div>
+                    
+                    <div class="calendar-container">
+                        <h4 id="month-year"></h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Sun</th>
+                                    <th>Mon</th>
+                                    <th>Tue</th>
+                                    <th>Wed</th>
+                                    <th>Thu</th>
+                                    <th>Fri</th>
+                                    <th>Sat</th>
+                                </tr>
+                            </thead>
+                            <tbody id="calendar-body">
+                                <!-- Calendar dates will be generated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <script>
+                        function generateCalendar() {
+    const today = new Date();
+    const currentMonth = today.getMonth();
+    const currentYear = today.getFullYear();
+    const currentDate = today.getDate();  // Get today's date
+
+    const monthYearElement = document.getElementById("month-year");
+    const calendarBody = document.getElementById("calendar-body");
+
+    const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    monthYearElement.textContent = `${months[currentMonth]} ${currentYear}`;
+
+    const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    calendarBody.innerHTML = "";
+
+    let date = 1;
+
+    for (let i = 0; i < 6; i++) {
+        let row = document.createElement("tr");
+
+        for (let j = 0; j < 7; j++) {
+            if (i === 0 && j < firstDayOfMonth) {
+                let cell = document.createElement("td");
+                cell.textContent = "";
+                row.appendChild(cell);
+            } else if (date > daysInMonth) {
+                break;
+            } else {
+                let cell = document.createElement("td");
+
+                if (date === currentDate) {
+                    cell.classList.add("today");  // Highlight today's date
+                }
+
+                cell.textContent = date;
+                row.appendChild(cell);
+                date++;
+            }
+        }
+
+        calendarBody.appendChild(row);
+    }
+}
+
+generateCalendar();
+
+                    </script>
+                    
+                    
+                </div>
+
+                <!-- End of Reminders-->
+
+            </div>
+
+        </main>
+
+    </div>
+    
+
+    <script src="index.js"></script>
+</body>
+
+</html>

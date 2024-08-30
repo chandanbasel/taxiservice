@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Employee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 14px;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"], input[type="email"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Edit Employee</h1>
+        <form action="/edit-employee/<%= employee._id %>" method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" value="<%= employee.name %>" required>
+            
+            <label>Age:</label>
+            <input type="number" name="age" value="<%= employee.age %>" required>
+            
+            <label>Work:</label>
+            <input type="text" name="work" value="<%= employee.work %>" required>
+            
+            <label>Mobile:</label>
+            <input type="text" name="mobile" value="<%= employee.mobile %>" required>
+            
+            <label>Email:</label>
+            <input type="email" name="email" value="<%= employee.email %>" required>
+            
+            <label>Salary:</label>
+            <input type="number" name="salary" value="<%= employee.salary %>" required>
+            
+            <button type="submit">Update Employee</button>
+        </form>
+    </div>
+</body>
+</html>

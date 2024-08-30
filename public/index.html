@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Style Landing Page</title>
+    <!--<link rel="stylesheet" href="styles.css">-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #001427; /* Changed background color */
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px; /* Added padding to create gaps on both sides */
+            background-color: #001427; /* Changed background color */
+        }
+
+        .left-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 40px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .right-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .right-section a {
+            margin-left: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .right-section .sign-up {
+            background-color: #fff;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .right-section .language {
+            border: 1px solid #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 100px 50px; /* Adjusted padding for main content */
+        }
+
+        .content {
+            max-width: 500px;
+        }
+
+        .content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input {
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: none;
+        }
+
+        form button {
+            padding: 12px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .image-container {
+            max-width: 600px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 35px;
+        }
+
+        /* Promo Section Styles */
+        .promo-section {
+            display: flex;
+            padding: 40px 50px; /* Adjusted padding for the new section */
+            background-color: #f9f9f9;
+            color: #000; /* Changed text color to black */
+            align-items: center;
+        }
+
+        .promo-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .promo-text {
+            margin-left: 40px;
+            max-width: 500px;
+        }
+
+        .promo-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .promo-text p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .promo-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .promo-buttons a {
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 16px;
+        }
+
+        .promo-buttons .get-started {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .promo-buttons .sign-in {
+            color: #000;
+        }
+
+        /* New Business Section Styles */
+        .business-section {
+            display: flex;
+            padding: 60px 50px; /* Padding for the business section */
+            background-color: #fff; /* White background */
+            color: #000; /* Black text color */
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .business-text {
+            max-width: 500px;
+        }
+
+        .business-text h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .business-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .business-buttons a {
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 16px;
+        }
+
+        .business-buttons .get-started {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .business-buttons .check-solutions {
+            color: #000;
+            border-bottom: 1px solid #000;
+        }
+
+        .business-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            main,
+            .promo-section,
+            .business-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .promo-text,
+            .business-text {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+        }
+        /* Footer Section Styles */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 50px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style-type: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+}
+
+.store-buttons img {
+    width: 120px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.footer-info {
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+/* Section Styles */
+section {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.qr-code-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.qr-code {
+    width: 45%;
+    text-align: center;
+}
+
+.qr-code img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.qr-code p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="left-section">
+            <div class="logo">Zoomy</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Ride</a></li>
+                    <li><a href="#">Drive</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right-section">
+            <a href="#" class="language">EN</a>
+            <a href="#">Help</a>
+            <a href="#">Log in</a>
+            <a href="#" class="sign-up">Sign up</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="content">
+            <h1>Go anywhere with Zoomy</h1>
+            <p>Request a ride, hop in, and go.</p>
+            <form>
+                <input type="text" placeholder="Enter location">
+                <input type="text" placeholder="Enter destination">
+                <button type="submit">See prices</button>
+            </form>
+        </div>
+        <div class="image-container">
+            <img src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_873,w_698/v1684852612/assets/ba/4947c1-b862-400e-9f00-668f4926a4a2/original/Ride-with-Uber.png" alt="Illustration">
+        </div>
+    </main>
+
+    <!-- Promo Section -->
+    <section class="promo-section">
+        <div class="promo-image">
+            <img src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_698,w_698/v1684855112/assets/96/4dd3d1-94e7-481e-b28c-08d59353b9e0/original/earner-illustra.png" alt="Drive when you want">
+        </div>
+        <div class="promo-text">
+            <h2>Drive on your schedule and earn what you need</h2>
+            <p>Earn on your own time by offering deliveries, rides, or both. You can use your own car or rent one through Zoomy.</p>
+            <div class="promo-buttons">
+                <a href="#" class="get-started">Get started</a>
+                <a href="#" class="sign-in">Already have an account? Sign in</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Section -->
+    <section class="business-section">
+        <div class="business-text">
+            <h2>Zoomy, redesigned for business needs</h2>
+            <p>Zoomy for Business is a platform for managing global rides and local deliveries, for companies of any size.</p>
+            <div class="business-buttons">
+                <a href="#" class="get-started">Get started</a>
+                <a href="#" class="check-solutions">Check out our solutions</a>
+            </div>
+        </div>
+        <div class="business-image">
+            <img src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_698,w_698/v1684887108/assets/76/baf1ea-385a-408c-846b-59211086196c/original/u4b-square.png" alt="Uber for Business">
+        </div>
+    </section>
+     <!-- Driver--Business Section -->
+     <section class="promo-section">
+        <div class="promo-image">
+            <img src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_698,w_698/v1696243819/assets/18/34e6fd-33e3-4c95-ad7a-f484a8c812d7/original/fleet-management.jpg" alt="Drive when you want">
+        </div>
+        <div class="promo-text">
+            <h2>Earn income by leasing your vehicle.</h2>
+            <p>Join thousands of drivers and increase your weekly earnings with Zoomy</p>
+            <div class="promo-buttons">
+                <a href="#" class="get-started">Get started</a>
+                <a href="#" class="sign-in">Already have an account? Sign in</a>
+            </div>
+        </div>
+    </section>
+     <!-- QR Section -->
+     <section>
+        <h2>It's easier in the apps</h2>
+        <div class="qr-code-container">
+            <div class="qr-code">
+                <img src="path/to/uber-qr-code.png" alt="Uber QR Code">
+                <p>Download the Uber app</p>
+                <p>Scan to download</p>
+            </div>
+            <div class="qr-code">
+                <img src="#" alt="Driver QR Code">
+                <p>Download the Driver app</p>
+                <p>Scan to download</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Footer Section -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Company</h3>
+            <ul>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Our offerings</a></li>
+                <li><a href="#">Newsroom</a></li>
+                <li><a href="#">Investors</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Autonomous</a></li>
+                <li><a href="#">Gift cards</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Products</h3>
+            <ul>
+                <li><a href="#">Ride</a></li>
+                <li><a href="#">Drive</a></li>
+                <li><a href="#">Deliver</a></li>
+                
+                
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Global citizenship</h3>
+            <ul>
+                <li><a href="#">Safety</a></li>
+                <li><a href="#">Diversity and Inclusion</a></li>
+                <li><a href="#">Sustainability</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Travel</h3>
+            <ul>
+                <li><a href="#">Reserve</a></li>
+                <li><a href="#">Airports</a></li>
+                <li><a href="#">Cities</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="social-icons">
+            <a href="#"><img src="path_to_facebook_icon.png" alt="Facebook"></a>
+            <a href="#"><img src="path_to_twitter_icon.png" alt="Twitter"></a>
+            <a href="#"><img src="path_to_youtube_icon.png" alt="YouTube"></a>
+            <a href="#"><img src="path_to_linkedin_icon.png" alt="LinkedIn"></a>
+            <a href="#"><img src="path_to_instagram_icon.png" alt="Instagram"></a>
+        </div>
+        <div class="store-buttons">
+            <a href="#"><img src="path_to_google_play.png" alt="Google Play"></a>
+            <a href="#"><img src="path_to_app_store.png" alt="App Store"></a>
+        </div>
+        <div class="footer-info">
+            <p>© 2024 ZoomyCab.</p>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Accessibility</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+</body>
+</html>
