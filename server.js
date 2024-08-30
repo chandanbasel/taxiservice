@@ -7,6 +7,9 @@ const Employee = require("./model/employee");
 const Driver = require("./model/driver");
 
 const db = require('./db');
+require ('dotenv').config();
+
+const PORT = process.env.PORT || 3000;
 
 // Session middleware
 app.use(session({
