@@ -77,7 +77,7 @@ app.get("/admin", isAuthenticated, async (req, res) => {
 
 
 // Protect the admin route with authentication
-app.get("/admin", isAuthenticated, async (req, res) => {
+/*app.get("/admin", isAuthenticated, async (req, res) => {
   try {
     const employees = await Employee.find();
     const drivers = await Driver.find();
@@ -86,7 +86,7 @@ app.get("/admin", isAuthenticated, async (req, res) => {
     console.error(error);
     res.status(500).send("An error occurred while fetching data");
   }
-});
+});*/
 
 
 
