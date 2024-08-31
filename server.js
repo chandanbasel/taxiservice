@@ -125,8 +125,8 @@ app.get("/manageemployee", isAuthenticated, async (req, res) => {
 
 
 // Protect the home route with authentication
-app.get('/', isAuthenticated, function (req, res) {
-  res.render('index.ejs');
+app.get('/submit', isAuthenticated, function (req, res) {
+  res.render('submit.ejs');
 });
 
 app.get("/submit-driver", isAuthenticated, (req, res) => {
