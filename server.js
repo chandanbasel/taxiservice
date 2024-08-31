@@ -9,7 +9,7 @@ const Driver = require("./model/driver");
 const db = require('./db');
 require ('dotenv').config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // Session middleware
 app.use(session({
@@ -197,6 +197,10 @@ app.post('/edit-driver/:id', isAuthenticated, async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log('listening on port 3000');
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on http://0.0.0.0:${PORT}`);
 });
+
+// Increase the keep-alive timeout
+server.keepAliveTimeout = 120000; // 120 seconds
+server.headersTimeout = 120000;   // 120 seconds
