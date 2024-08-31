@@ -138,7 +138,7 @@ app.post("/submit", isAuthenticated, async (req, res) => {
     const data = new Employee(req.body);
     await data.save();
     // Redirect back to the form after saving data
-    res.redirect('/');
+    res.redirect('/submit');
   } catch (error) {
     console.error(error);
     res.status(500).send("An error occurred while saving data");
