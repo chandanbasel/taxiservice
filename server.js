@@ -7,9 +7,6 @@ const Employee = require("./model/employee");
 const Driver = require("./model/driver");
 
 const db = require('./db');
-require ('dotenv').config();
-
-const PORT = process.env.PORT || 10000;
 
 // Session middleware
 app.use(session({
@@ -47,7 +44,7 @@ app.get('/zmyadmin', (req, res) => {
 // Handle login form submission
 app.post('/zmyadmin', async (req, res) => {
   const { username, password } = req.body;
-  
+
   if (username === adminCredentials.username && bcrypt.compareSync(password, adminCredentials.password)) {
     req.session.user = username;
     res.redirect('/admin'); // Redirect to admin dashboard after login
@@ -77,7 +74,7 @@ app.get("/admin", isAuthenticated, async (req, res) => {
 
 
 // Protect the admin route with authentication
-/*app.get("/admin", isAuthenticated, async (req, res) => {
+app.get("/admin", isAuthenticated, async (req, res) => {
   try {
     const employees = await Employee.find();
     const drivers = await Driver.find();
@@ -86,7 +83,7 @@ app.get("/admin", isAuthenticated, async (req, res) => {
     console.error(error);
     res.status(500).send("An error occurred while fetching data");
   }
-});*/
+});
 
 
 
@@ -125,12 +122,15 @@ app.get("/manageemployee", isAuthenticated, async (req, res) => {
 
 
 // Protect the home route with authentication
-app.get('/submit', isAuthenticated, function (req, res) {
-  res.render('submit.ejs');
+app.get('/', isAuthenticated, function (req, res) {
+  res.render('index.ejs');
 });
 
 app.get("/submit-driver", isAuthenticated, (req, res) => {
   res.render('drv.ejs');
+});
+app.get("/submit", isAuthenticated, (req, res) => {
+  res.render('submit.ejs');
 });
 
 app.post("/submit", isAuthenticated, async (req, res) => {
@@ -197,10 +197,7 @@ app.post('/edit-driver/:id', isAuthenticated, async (req, res) => {
   }
 });
 
-const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server is running on http://0.0.0.0:${PORT}`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });
-
-// Increase the keep-alive timeout
-server.keepAliveTimeout = 120000; // 120 seconds
-server.headersTimeout = 120000;   // 120 seconds
