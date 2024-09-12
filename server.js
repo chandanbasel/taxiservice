@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
 
 const Employee = require("./model/employee");
 const Driver = require("./model/driver");
@@ -10,9 +12,13 @@ const db = require('./db');
 
 // Session middleware
 app.use(session({
-  secret: 'your-secret-key', // Replace with a strong secret
+  secret: 'your-secret-key',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: true,
+  store: MongoStore.create({ 
+    mongoUrl: process.env.MONGODB_URL  // No quotes around process.env.MONGODB_URL
+  }),
+  cookie: { maxAge: 1000 * 60 * 60 * 24 } // Optional: set session expiration
 }));
 
 app.use(express.static('public'));
