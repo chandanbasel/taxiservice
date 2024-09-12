@@ -70,9 +70,6 @@ app.get("/admin", isAuthenticated, async (req, res) => {
   }
 });
 
-
-
-
 // Protect the admin route with authentication
 app.get("/admin", isAuthenticated, async (req, res) => {
   try {
@@ -84,12 +81,6 @@ app.get("/admin", isAuthenticated, async (req, res) => {
     res.status(500).send("An error occurred while fetching data");
   }
 });
-
-
-
-
-
-
 
 app.get("/manageDriver", isAuthenticated, async (req, res) => {
   try {
@@ -112,14 +103,6 @@ app.get("/manageemployee", isAuthenticated, async (req, res) => {
     res.status(500).send("An error occurred while fetching data");
   }
 });
-
-
-
-
-
-
-
-
 
 // Protect the home route with authentication
 app.get('/', isAuthenticated, function (req, res) {
